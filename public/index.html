@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GeoBot – AI Geography Quiz Chatbot</title>
+    <meta name="description" content="Challenge yourself with an AI-powered geography quiz chatbot. Ask questions, test your knowledge of capitals, rivers, mountains, and more!" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Animated background -->
+    <div class="bg-layer" aria-hidden="true">
+      <div class="globe-ring ring-1"></div>
+      <div class="globe-ring ring-2"></div>
+      <div class="globe-ring ring-3"></div>
+      <div class="particle" style="--x:10%;--y:20%;--d:6s;--s:1.2"></div>
+      <div class="particle" style="--x:80%;--y:10%;--d:8s;--s:0.8"></div>
+      <div class="particle" style="--x:50%;--y:70%;--d:5s;--s:1.5"></div>
+      <div class="particle" style="--x:20%;--y:80%;--d:7s;--s:0.9"></div>
+      <div class="particle" style="--x:90%;--y:50%;--d:9s;--s:1.1"></div>
+      <div class="particle" style="--x:35%;--y:40%;--d:6.5s;--s:0.7"></div>
+    </div>
+
+    <div class="app-wrapper">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <span class="logo-icon">🌍</span>
+            <span class="logo-text">GeoBot</span>
+          </div>
+          <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+
+        <div class="sidebar-body">
+          <div class="score-card">
+            <h3 class="score-title">📊 Your Stats</h3>
+            <div class="score-grid">
+              <div class="score-item">
+                <span class="score-num" id="correctCount">0</span>
+                <span class="score-label">Correct</span>
+              </div>
+              <div class="score-item">
+                <span class="score-num wrong" id="wrongCount">0</span>
+                <span class="score-label">Wrong</span>
+              </div>
+              <div class="score-item">
+                <span class="score-num streak" id="streakCount">0</span>
+                <span class="score-label">Streak 🔥</span>
+              </div>
+            </div>
+            <div class="accuracy-bar-wrap">
+              <div class="accuracy-label">Accuracy <span id="accuracyPct">—</span></div>
+              <div class="accuracy-bar">
+                <div class="accuracy-fill" id="accuracyFill" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="topic-list">
+            <h3 class="topic-title">🗺️ Topics</h3>
+            <ul>
+              <li>🏛️ Capitals &amp; Countries</li>
+              <li>🏔️ Mountains &amp; Rivers</li>
+              <li>🏜️ Deserts &amp; Oceans</li>
+              <li>🌡️ Climate &amp; Environment</li>
+              <li>👥 Population &amp; Geography</li>
+              <li>🗺️ Maps &amp; Locations</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-actions">
+            <button class="btn-restart" id="restartBtn">🔄 Restart Quiz</button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Chat Area -->
+      <main class="chat-main">
+        <!-- Header -->
+        <header class="chat-header">
+          <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="header-info">
+            <div class="bot-avatar">🌍</div>
+            <div class="header-text">
+              <h1>GeoBot</h1>
+              <span class="status-dot" id="statusDot"></span>
+              <span class="status-text" id="statusText">Connecting…</span>
+            </div>
+          </div>
+          <div class="header-badge">Geography Quiz AI</div>
+        </header>
+
+        <!-- Chat Messages -->
+        <section class="chat-messages" id="chatMessages" aria-live="polite" aria-label="Chat messages">
+          <!-- Messages inserted here -->
+        </section>
+
+        <!-- Input Area -->
+        <footer class="chat-input-area">
+          <div class="input-wrap">
+            <textarea
+              id="userInput"
+              class="user-input"
+              placeholder="Type your answer or ask a geography question…"
+              rows="1"
+              maxlength="500"
+              aria-label="Your message"
+            ></textarea>
+            <button class="send-btn" id="sendBtn" aria-label="Send message">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+          <p class="input-hint">Press <kbd>Enter</kbd> to send · <kbd>Shift+Enter</kbd> for new line</p>
+        </footer>
+      </main>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
